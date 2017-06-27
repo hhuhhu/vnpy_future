@@ -16,9 +16,9 @@ import matplotlib
 import pymongo
 import pandas as pd
 
-from vtConstant import *
-from vtFunction import loadMongoSetting
-from vtGateway import VtOrderData, VtTradeData
+from core.vtConstant import *
+from core.vtFunction import loadMongoSetting
+from core.vtGateway import VtOrderData, VtTradeData
 from core.ctaBase import *
 
 # matplotlib.use('Qt4Agg')
@@ -620,7 +620,7 @@ class BacktestingEngine(object):
         if losingResult:
             averageLosing = totalLosing/losingResult        # 平均每笔亏损
         if averageLosing:
-            profitLossRatio = -averageWinning/averageLosing # 盈亏比
+            profitLossRatio = -totalWinning/totalLosing # 盈亏比
 
         # 返回回测结果
         d = {}
@@ -745,7 +745,7 @@ class BacktestingEngine(object):
         for setting in settingList:
             self.clearBacktestingResult()
             self.output('-' * 30)
-            self.output('setting: %s' %str(setting))
+            self.output('setting: %s' % str(setting))
             self.initStrategy(strategyClass, setting)
             self.runBacktesting()
             d = self.calculateBacktestingResult()
@@ -760,7 +760,7 @@ class BacktestingEngine(object):
         self.output('-' * 30)
         self.output(u'优化结果：')
         for result in resultList:
-            self.output(u'%s: %s' %(result[0], result[1]))
+            self.output(u'%s: %s' % (result[0], result[1]))
         return result
 
     def clearBacktestingResult(self):
@@ -911,12 +911,12 @@ def optimize(strategyClass, setting, targetName,
     engine.setEndDate(endDate)
     engine.setSlippage(slippage)
     engine.setRate(rate)
-    engine.setSize(size)
-    engine.setDatabase(dbName, symbol)
-    
+
     engine.initStrategy(strategyClass, setting)
     engine.runBacktesting()
     d = engine.calculateBacktestingResult()
+    engine.setSize(size)
+    engine.setDatabase(dbName, symbol)
     try:
         targetValue = d[targetName]
     except KeyError:

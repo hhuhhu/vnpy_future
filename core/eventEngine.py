@@ -10,7 +10,7 @@ from collections import defaultdict
 # from PyQt4.QtCore import QTimer
 
 # 自己开发的模块
-from eventType import *
+from core.eventType import *
 
 
 ########################################################################

@@ -5,16 +5,6 @@
 '''
 
 from __future__ import division
-
-
-# # 把vn.trader根目录添加到python环境变量中
-import sys
-import os
-pwd = os.getcwd()
-father_path = os.path.abspath(os.path.dirname(pwd)+os.path.sep+".")
-sys.path.append(father_path)
-sys.path[0] = father_path
-
 # 常量定义
 # CTA引擎中涉及到的交易方向类型
 CTAORDER_BUY = u'买开'
@@ -45,7 +35,7 @@ ENGINETYPE_BACKTESTING = 'backtesting'  # 回测
 ENGINETYPE_TRADING = 'trading'          # 实盘
 
 # CTA引擎中涉及的数据类定义
-from vtConstant import EMPTY_UNICODE, EMPTY_STRING, EMPTY_FLOAT, EMPTY_INT
+from core.vtConstant import EMPTY_UNICODE, EMPTY_STRING, EMPTY_FLOAT, EMPTY_INT
 
 
 ########################################################################

@@ -2,9 +2,9 @@
 
 import time
 
-from eventEngine import *
+from core.eventEngine import *
 
-from vtConstant import *
+from core.vtConstant import *
 
 
 ########################################################################
