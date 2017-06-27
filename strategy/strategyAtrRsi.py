@@ -13,8 +13,8 @@
 import talib
 import numpy as np
 
-from ctaBase import *
-from ctaTemplate import CtaTemplate
+from core.ctaBase import *
+from core.ctaTemplate import CtaTemplate
 
 
 class AtrRsiStrategy(CtaTemplate):
@@ -238,11 +238,8 @@ class AtrRsiStrategy(CtaTemplate):
 if __name__ == '__main__':
     # 提供直接双击回测的功能
     # 导入PyQt4的包是为了保证matplotlib使用PyQt4而不是PySide，防止初始化出错
-    from ctaBacktesting import *
+    from core.ctaBacktesting import *
 
-    father_path = os.path.abspath(os.path.dirname(pwd) + os.path.sep + ".")
-    sys.path.append(father_path)
-    sys.path[0] = father_path
     # 创建回测引擎
     engine = BacktestingEngine()
     
@@ -272,21 +269,21 @@ if __name__ == '__main__':
     engine.showBacktestingResult()
     
     # 跑优化
-    # setting = OptimizationSetting()                 # 新建一个优化任务设置对象
-    # setting.setOptimizeTarget('capital')            # 设置优化排序的目标是策略净盈利
-    # setting.addParameter('atrLength', 12, 20, 2)    # 增加第一个优化参数atrLength，起始11，结束12，步进1
-    # setting.addParameter('atrMa', 20, 30, 5)        # 增加第二个优化参数atrMa，起始20，结束30，步进1
-    # setting.addParameter('rsiLength', 5)            # 增加一个固定数值的参数
-    #
-    # # 性能测试环境：I7-3770，主频3.4G, 8核心，内存16G，Windows 7 专业版
-    # # 测试时还跑着一堆其他的程序，性能仅供参考
-    # import time
-    # start = time.time()
-    #
-    # # 运行单进程优化函数，自动输出结果，耗时：359秒
-    # engine.runOptimization(AtrRsiStrategy, setting)
-    #
-    # # 多进程优化，耗时：89秒
-    # #engine.runParallelOptimization(AtrRsiStrategy, setting)
-    #
-    # print(u'耗时：%s' %(time.time()-start))
+    setting = OptimizationSetting()                 # 新建一个优化任务设置对象
+    setting.setOptimizeTarget('capital')            # 设置优化排序的目标是策略净盈利
+    setting.addParameter('atrLength', 12, 20, 2)    # 增加第一个优化参数atrLength，起始11，结束12，步进1
+    setting.addParameter('atrMa', 20, 30, 5)        # 增加第二个优化参数atrMa，起始20，结束30，步进1
+    setting.addParameter('rsiLength', 5)            # 增加一个固定数值的参数
+
+    # 性能测试环境：I7-3770，主频3.4G, 8核心，内存16G，Windows 7 专业版
+    # 测试时还跑着一堆其他的程序，性能仅供参考
+    import time
+    start = time.time()
+
+    # 运行单进程优化函数，自动输出结果，耗时：359秒
+    engine.runOptimization(AtrRsiStrategy, setting)
+
+    # 多进程优化，耗时：89秒
+    #engine.runParallelOptimization(AtrRsiStrategy, setting)
+
+    print(u'耗时：%s' %(time.time()-start))

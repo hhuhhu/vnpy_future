@@ -16,8 +16,8 @@
 也希望社区能做出一个解决了以上潜在风险的Demo出来。
 """
 
-from ctaBase import *
-from ctaTemplate import CtaTemplate
+from core.ctaBase import *
+from core.ctaTemplate import CtaTemplate
 
 
 ########################################################################
