@@ -15,7 +15,7 @@ from strategy.bias import BiasStrategy
 from core.ctaBacktesting import OptimizationSetting, BacktestingEngine
 from core.ctaBase import FUTURE_1MIN
 
-creator.create("FitnessMax", base.Fitness, weights=(1.0, 1.0))
+creator.create("FitnessMax", base.Fitness, weights=(1.0, 1.0, 1.0))
 creator.create("Individual", list, fitness=creator.FitnessMax)
 
 
@@ -105,8 +105,8 @@ def object_func(strategy_avg):
     backresult = engine.calculateBacktestingResult()
     capital = backresult['capital']
     profit_loss_ratio = backresult['profitLossRatio']
-
-    return capital, profit_loss_ratio
+    order_num = backresult['totalResult']
+    return capital, profit_loss_ratio, order_num
 
 
 def mut_flip_bit(individual, indpb):
@@ -151,8 +151,8 @@ def optimize():
     toolbox.register("map", pool.map)
     MU = 20  # 每一代选择的个体数
     LAMBDA = 100  # 每一代产生的子女数
-    pop = toolbox.population(40)
-    CXPB, MUTPB, NGEN = 0.5, 0.2, 5  # 分别为交叉概率、变异概率、产生种群代数
+    pop = toolbox.population(80)
+    CXPB, MUTPB, NGEN = 0.5, 0.2, 300  # 分别为交叉概率、变异概率、产生种群代数
     hof = tools.ParetoFront()  # 非占优最优集
     stats = tools.Statistics(lambda ind: ind.fitness.values)
     stats.register("avg", np.mean, axis=0)

@@ -16,7 +16,7 @@ def fetch_fuzzy_relations(val,fuzzy_relation_vector):
   r_list = []
   for i in range(len(fuzzy_relation_vector)):
     if(fuzzy_relation_vector[i][0] == val):
-      print fuzzy_relation_vector[i];
+      print(fuzzy_relation_vector[i])
       r_list.append(fuzzy_relation_vector[i]);
   return r_list;       
 

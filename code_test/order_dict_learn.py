@@ -7,7 +7,7 @@
 """
 from collections import OrderedDict
 a = OrderedDict()
-a = {"a":"1", "b":2, "c":3, "d":5}
+a = {"a": "1", "b": 2, "c": 3, "d": 5}
 print(a)
 a.items()
 print(a.items())

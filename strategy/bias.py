@@ -213,7 +213,10 @@ if __name__ == '__main__':
     engine.setDatabase(FUTURE_1MIN, 'RB1601')
 
     # 在引擎中创建策略对象
-    strategy_avg = [237, -0.11992738845557072, 0.23262267198968178, -0.8326681792298627, 0.3589295582743579]
+    # strategy_avg = [73, -0.9086709986332435, 0.566766406031368, -0.6270363358246269, -0.9821013758300181]
+    # strategy_avg = [24, -0.5376071711564816, 0.014560780473585888, -0.8786230780066739, -0.9808172242153463]
+    # strategy_avg = [24, -0.5376071711564816, 0.014560780473585888, -0.8786230780066739, -0.9808172242153463]
+    strategy_avg = [24, -0.5376071711564816, 0.288118583358942, 0.025341378002950554, -0.67]
     setting = {'bias_period': strategy_avg[0], 'bias_buy': strategy_avg[1], 'bias_short': strategy_avg[2],
                'bias_sell': strategy_avg[3], 'bias_cover': strategy_avg[4]}
     engine.initStrategy(BiasStrategy, setting)
