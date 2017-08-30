@@ -13,9 +13,9 @@ from pymongo import MongoClient
 
 def mongo_connect():
 
-    fileName = 'config.json'
+    file_name = 'config.json'
     path = os.path.abspath(os.path.dirname(__file__))
-    filename = os.path.join(path, fileName)
+    filename = os.path.join(path, file_name)
     with open(filename) as f:
         setting = json.load(f)
     host = setting['mongoHost']
