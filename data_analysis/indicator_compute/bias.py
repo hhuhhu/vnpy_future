@@ -5,7 +5,7 @@
 @file: bias.py
 @time: 2017/6/25 14:29
 """
-from data_handle.data_read import data_read
+from data_handle.data_load import data_read
 import matplotlib.pyplot as plt
 
 rb1601 = data_read('RB1601')
