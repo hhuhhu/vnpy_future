@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/gxy/vnpy_future/research/rnn/xauusd/ResidualPonderDNC_2.ckpt"
+all_model_checkpoint_paths: "/home/gxy/vnpy_future/research/rnn/xauusd/ResidualPonderDNC_2.ckpt"
